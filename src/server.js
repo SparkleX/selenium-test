@@ -1,0 +1,10 @@
+const Koa = require("koa");
+const KoaLogger = require("koa-logger");
+const KoaMount = require("koa-mount");
+const KoaStatic = require("koa-static");
+const app = new Koa();
+app.use(KoaLogger());
+app.use(KoaMount("/", KoaStatic("public")));
+const port = process.env.PORT || 3000;
+app.listen(port);
+console.info(`server run on port ${port}`);
